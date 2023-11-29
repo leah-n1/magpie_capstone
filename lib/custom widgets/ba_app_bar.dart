@@ -1,0 +1,45 @@
+import 'package:flutter/widgets.dart';
+import 'ba_spacer.dart';
+
+
+class BAAppBar extends StatefulWidget {
+  final Size screenSize;
+  final Color backgroundColor;
+  final Widget? leadingWidget;
+  final Widget? titleWidget;
+  final Widget? trailingWidget;
+
+  const BAAppBar({
+    super.key,
+    required this.screenSize,
+    this.backgroundColor = const Color.fromARGB(255, 243, 243, 243),
+    this.leadingWidget,
+    this.titleWidget,
+    this.trailingWidget,
+  });
+
+  @override
+  State<BAAppBar> createState() => _BAAppBarState();
+}
+
+class _BAAppBarState extends State<BAAppBar> {
+  @override
+  Widget build(BuildContext context) {
+    var size = widget.screenSize;
+    return Container(
+      height: size.height * 0.10,
+      width: 400,
+      color: widget.backgroundColor,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          widget.leadingWidget ?? Container(),
+          widget.titleWidget ?? Container(),
+          const BASpacer(),
+          widget.trailingWidget ?? Container(),
+        ],
+      ),
+    );
+  }
+}

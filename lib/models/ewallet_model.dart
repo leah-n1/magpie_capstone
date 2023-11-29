@@ -30,7 +30,7 @@ EWallet({
       accountNumber: map['accountNumber'] as String,
       balance: map['balance'] as num,
       accountName: map['accountName'] as String,
-      transactionHistory: List<Transaction>.from((map['transactionHistory'] as List<int>).map<Transaction>((x) => Transaction.fromMap(x as Map<String,dynamic>),),),
+      transactionHistory: List<Transaction>.from((map['transactionHistory'] as List<dynamic>).map<Transaction>((x) => Transaction.fromMap(x as Map<String,dynamic>),),),
     );
   }
 
