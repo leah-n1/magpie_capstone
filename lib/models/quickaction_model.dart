@@ -1,15 +1,15 @@
-// import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart';
 
-// class QuickAction {
-//   Image image;
-//   String quickaction;
-// QuickAction(
-//   this.image,
-//   this.quickaction,
-// );}
+class QuickAction {
+  Image image;
+  String quickaction;
+QuickAction(
+  this.image,
+  this.quickaction,
+);}
 
 
-// const listQuickActions= [
+// List<QuickAction>listQuickActions= [
 //   QuickAction (
 //     image:, 
 //     quickaction: 'Save'

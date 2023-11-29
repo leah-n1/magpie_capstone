@@ -1,4 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/widgets.dart';
+
+import '../models/transaction_model.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as convert;
 
 // import '../models/transaction.dart';
 // import 'dart:convert' as convert;
@@ -14,7 +20,25 @@ class StackPositionedWidget extends StatefulWidget {
 class _StackPositionedWidgetState extends State<StackPositionedWidget> {
 
 
+List<Transaction> listTransaction = [
+  Transaction(transactionId: 'empty.', date: '0', type:'0', amount: 0, description: '0')
+];
 
+Future<List<Transaction>> getTransaction() async {
+  var url = Uri.parse(
+    "https://demo9021501.mockable.io/account_details");
+
+  var response = await http.get(url);
+  List<Transaction> tempList= [];
+
+if (response.statusCode == 200) {
+    var jsonResponse =
+        convert.jsonDecode(response.body) as Map<String, dynamic>;
+    var itemCount = jsonResponse['totalItems'];
+    print('Number of books about http: $itemCount.');
+  } else {
+    print('Request failed with status');
+  }}
 
   
   @override
@@ -22,46 +46,46 @@ class _StackPositionedWidgetState extends State<StackPositionedWidget> {
     var screenSize = MediaQuery.of(context).size;
     debugPrint('screenSize: $screenSize');
    
-//     var listTransaction=[
-//     Transaction(
-//       transactionId: "T1001",
-//       date: "2023-11-20",
-//       type: "Debit",
-//       amount: 200.00,
-//       description: "Grocery Shopping"),
-//     Transaction(
-//       transactionId: "T1002",
-//       date: "2023-11-18",
-//       type: "Credit",
-//       amount: 500.00,
-//       description: "Salary Deposit"),
-//     Transaction(
-//       transactionId: "T1003",
-//       date: "2023-11-15",
-//       type: "Debit",
-//       amount: 150.00,
-//       description: "Utility Bill Payment"),
-//     Transaction(
-//       transactionId: "T1004",
-//       date: "2023-11-12",
-//       type: "Credit",
-//       amount: 300.00,
-//       description: "Refund from Online Shopping"),
-//     Transaction(
-//       transactionId: "T1005",
-//       date: "2023-11-10",
-//       type: "Debit",
-//       amount:  100.00,
-//       description: "Restaurant Meal"),
-//     ];
+    // var listTransaction=[
+    // Transaction(
+    //   transactionId: "T1001",
+    //   date: "2023-11-20",
+    //   type: "Debit",
+    //   amount: 200.00,
+    //   description: "Grocery Shopping"),
+    // Transaction(
+    //   transactionId: "T1002",
+    //   date: "2023-11-18",
+    //   type: "Credit",
+    //   amount: 500.00,
+    //   description: "Salary Deposit"),
+    // Transaction(
+    //   transactionId: "T1003",
+    //   date: "2023-11-15",
+    //   type: "Debit",
+    //   amount: 150.00,
+    //   description: "Utility Bill Payment"),
+    // Transaction(
+    //   transactionId: "T1004",
+    //   date: "2023-11-12",
+    //   type: "Credit",
+    //   amount: 300.00,
+    //   description: "Refund from Online Shopping"),
+    // Transaction(
+    //   transactionId: "T1005",
+    //   date: "2023-11-10",
+    //   type: "Debit",
+    //   amount:  100.00,
+    //   description: "Restaurant Meal"),
+    // ];
 
 
-//   didTap(){
-// var listTransaction = getTransaction();
-//  for ( var item in listTransaction) {
-//     print(item.transactionId);
-//   }
-// }
+  didTap(Transaction listTransaction){
+var listTransaction = getTransaction();
+ for ( var item in listTransaction) {
+    print(item.transactionId);
+  }
+}
 
     return Stack(
             children: [
@@ -98,40 +122,67 @@ class _StackPositionedWidgetState extends State<StackPositionedWidget> {
                            crossAxisAlignment: CrossAxisAlignment.center,
                            children: [
                              Expanded(
-                               flex: 2,
+                               flex: 3,
                                child: Container(
-                               height: 100,
+                               height: 120,
                                width:50,
-                               color: const Color.fromARGB(255, 227, 180, 180),
+                               color: const Color.fromARGB(255,255,255,255),
                                margin: const EdgeInsets.fromLTRB(14,4,8,4),
                                child: Column(
                                  mainAxisAlignment: MainAxisAlignment.start,
                                  mainAxisSize: MainAxisSize.max,
                                  children: [
                                    Container(
-                                     height: 40,
-                                     width: 200, 
+                                     height: 50,
+                                     width: 250, 
                                      color: const Color.fromARGB(255,255,255,255),
-                                     margin: EdgeInsets.fromLTRB(1,1,1,0),
-                                     padding: EdgeInsets.fromLTRB(0, 5,0, 5),
+                                     margin: const EdgeInsets.fromLTRB(1,1,1,0),
+                                     padding: const EdgeInsets.fromLTRB(0,2,0,2),
                                      child: const Text(
                                        'PHP',
                                        style:TextStyle(
-                                         fontSize:24,
+                                         fontSize:36,
                                          fontWeight: FontWeight.w600,
                                          color: Color.fromARGB(255, 10, 10, 10)),),
                                    ),
-                                   Container( height: 25,
+                                   Container(
+                                    height: 25,
+                                    width:250,
                                      color: const Color.fromARGB(255,255,255,255),
-                                     margin: EdgeInsets.fromLTRB(1,1,1,0),
+                                     margin: const EdgeInsets.fromLTRB(1,1,1,0),
+                                     padding: const EdgeInsets.fromLTRB(0,4,0,4),
+                                     child: const Text('Available Balance',
+                                     style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color.fromARGB(255,10,10,10)
+                                     ),)
                                    ),
-                                   Container( height: 16,
+                                   Container( 
+                                    height: 14,
+                                    width: 250,
                                      color: const Color.fromARGB(255,255,255,255),
-                                     margin: EdgeInsets.fromLTRB(1,1,1,0),
+                                     margin: const EdgeInsets.fromLTRB(1,1,1,0),
+                                     padding: const EdgeInsets.fromLTRB(0,2,0,2),
+                                     child: const Text('Account Name: ',
+                                     style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color.fromARGB(255,10,10,10)
+                                     ),)
                                    ),
-                                   Container( height: 14,
+                                   Container( 
+                                    height: 14,
+                                    width:250,
                                      color: const Color.fromARGB(255,255,255,255),
-                                     margin: EdgeInsets.fromLTRB(1,1,1,0),
+                                     margin: const EdgeInsets.fromLTRB(1,12,1,0),
+                                     padding: const EdgeInsets.fromLTRB(0,2,0,2),
+                                     child: const Text('Account Number: ',
+                                     style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color.fromARGB(255,10,10,10)
+                                     ),)
                                    ),
                                    ],
                                  ),
@@ -140,15 +191,15 @@ class _StackPositionedWidgetState extends State<StackPositionedWidget> {
                              Expanded(
                                flex:1,
                                child: Container(
-                               height: 100,
-                               width:50,
+                               height: 120,
+                               width:30,
                                color: const Color.fromARGB(255, 227, 180, 180),
                                margin: const EdgeInsets.fromLTRB(0,16,14,16),
                                ),
                              ),
                            ],
-                                                  ),
-                        
+                          ),
+
                          ),
                        const SizedBox(height:16),
                        Container(
@@ -164,6 +215,13 @@ class _StackPositionedWidgetState extends State<StackPositionedWidget> {
                                spreadRadius: 0,
                              )] ,
                            ),
+                          child:GridView.builder(
+                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 5
+                            ), 
+                            itemBuilder: (context, index){
+                              return Container();
+                            })
                          ),
                        const SizedBox(height:16),
                        Container(
@@ -203,7 +261,7 @@ class _StackPositionedWidgetState extends State<StackPositionedWidget> {
                              scrollDirection: Axis.vertical,
                              itemBuilder: (context,index){
                                return GestureDetector(
-                                 onTap: (){},
+                                 onTap: ()=>didTap(listTransaction[index]),
                                  child: Container(
                                    width: 336,
                                    height: 95,
@@ -231,7 +289,7 @@ class _StackPositionedWidgetState extends State<StackPositionedWidget> {
                                          child: Container(
                                           height: 68,
                                            width: 50,
-                                           color: Color.fromARGB(255, 181, 62, 62),
+                                           color: const Color.fromARGB(255, 181, 62, 62),
                                            margin: const EdgeInsets.fromLTRB(8,4,8,4),
                                            child: Column(
                                              mainAxisAlignment: MainAxisAlignment.start,
@@ -241,10 +299,9 @@ class _StackPositionedWidgetState extends State<StackPositionedWidget> {
                                                height:18,
                                                color: const Color.fromRGBO(254, 254, 254,1),
                                                margin: const EdgeInsets.all(1),
-                                               child: const Text(
-                                                 'Amount: PHP',
-                                                 // ${listTransaction[index].amount}',
-                                                 style: TextStyle(
+                                               child: Text(
+                                                 'Amount: PHP ${listTransaction[index].amount}',
+                                                  style: const TextStyle(
                                                    color: Color.fromARGB(255, 2, 1, 1),
                                                    fontWeight: FontWeight.w700,
                                                    fontSize: 15,),),
@@ -253,10 +310,9 @@ class _StackPositionedWidgetState extends State<StackPositionedWidget> {
                                                height:14,
                                                color: const Color.fromRGBO(254, 254, 254,1),
                                                margin: const EdgeInsets.all(1),
-                                                child: const Text(
-                                                 'Date',
-                                                 // 'Date:  ${listTransaction[index].date}',
-                                                 style: TextStyle(
+                                                child: Text(
+                                                 'Date:  ${listTransaction[index].date}',
+                                                 style: const TextStyle(
                                                    color: Color.fromARGB(255, 2, 1, 1),
                                                    fontWeight: FontWeight.w600,
                                                    fontSize: 12,),),
@@ -265,10 +321,9 @@ class _StackPositionedWidgetState extends State<StackPositionedWidget> {
                                                height:14,
                                                color: const Color.fromRGBO(254, 254, 254,1),
                                                margin: const EdgeInsets.all(1),
-                                               child: const Text(
-                                                 'Description',
-                                                 // ${listTransaction[index].description}',
-                                                 style: TextStyle(
+                                               child: Text(
+                                                 'Description: ${listTransaction[index].description}',
+                                                 style: const TextStyle(
                                                    color: Color.fromARGB(255, 2, 1, 1),
                                                    fontWeight: FontWeight.w600,
                                                    fontSize: 12,),),
@@ -277,18 +332,16 @@ class _StackPositionedWidgetState extends State<StackPositionedWidget> {
                                                height:14,
                                                color:const Color.fromRGBO(254, 254, 254,1),
                                                margin: const EdgeInsets.all(1),
-                                               child: const Text('Type',
-                                                 // listTransaction[index].type,
-                                                 style: TextStyle(
+                                               child: Text(
+                                                 listTransaction[index].type,
+                                                 style: const TextStyle(
                                                    // color: listTransaction[index].type == "Debit" 
                                                    // ? const Color.fromRGBO(234,140,151, 1) : 
                                                    //  const Color.fromRGBO(13,170,57,1),
                                                    fontWeight: FontWeight.w600,
                                                    fontSize: 12,),),
-                                               
                                                ),
-                                               
-                                             ],
+                                              ],
                                            ),
                                          ),
                                        ),]
@@ -343,3 +396,4 @@ class _StackPositionedWidgetState extends State<StackPositionedWidget> {
 
 
 
+}

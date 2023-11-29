@@ -1,75 +1,79 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
 
 
-
-class Transaction{
+class Transaction {
   String transactionId;
   String date;
   String type;
   double amount;
-  String description;
+  Transaction({
+    required this.transactionId,
+    required this.date,
+    required this.type,
+    required this.amount,
+  });
   
-Transaction({
-  required this.transactionId,
-  required this.date,
-  required this.type,
-  required this.amount,
-  required this.description,
-});
+
+  Transaction copyWith({
+    String? transactionId,
+    String? date,
+    String? type,
+    double? amount,
+  }) {
+    return Transaction(
+      transactionId: transactionId ?? this.transactionId,
+      date: date ?? this.date,
+      type: type ?? this.type,
+      amount: amount ?? this.amount,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'transactionId': transactionId,
+      'date': date,
+      'type': type,
+      'amount': amount,
+    };
+  }
+
+  factory Transaction.fromMap(Map<String, dynamic> map) {
+    return Transaction(
+      transactionId: map['transactionId'] as String,
+      date: map['date'] as String,
+      type: map['type'] as String,
+      amount: map['amount'] as double,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory Transaction.fromJson(String source) => Transaction.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() {
+    return 'Transaction(transactionId: $transactionId, date: $date, type: $type, amount: $amount)';
+  }
+
+  @override
+  bool operator ==(covariant Transaction other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.transactionId == transactionId &&
+      other.date == date &&
+      other.type == type &&
+      other.amount == amount;
+  }
+
+  @override
+  int get hashCode {
+    return transactionId.hashCode ^
+      date.hashCode ^
+      type.hashCode ^
+      amount.hashCode;
+  }
 }
 
-// class Transactions{
-//  List<Transaction> listTransaction =[];
-// }
-
-
-// Future<List<Transaction>> getTransaction() async{
-//   var url = Uri.parse("https://demo9021501.mockable.io/account_details");
-      
-//   var response = await http.get();
-//   if (response.statusCode == 200) {
-
-
-//     var jsonResponse =
-//         convert.jsonDecode(response.body) as Map<String, dynamic>;
-//     var itemCount = jsonResponse['totalItems'];
-//     print('Number of books about http: $itemCount.');
-//   } else {
-//     print('Request failed with status: ${response.statusCode}.');
-//   }
-//   //
-//  var tempList = [
-//    Transaction(
-//       transactionId: "T1001",
-//       date: ("2023-11-20"),
-//       type: "Debit",
-//       amount: 200.00,
-//       description: "Grocery Shopping"),
-//     Transaction(
-//       transactionId: "T1002",
-//       date: ("2023-11-18"),
-//       type: "Credit",
-//       amount: 500.00,
-//       description: "Salary Deposit"),
-//     Transaction(
-//       transactionId: "T1003",
-//       date: ("2023-11-15"),
-//       type: "Debit",
-//       amount: 150.00,
-//       description: "Utility Bill Payment"),
-//     Transaction(
-//       transactionId: "T1004",
-//       date: ("2023-11-12"),
-//       type: "Credit",
-//       amount: 300.00,
-//       description: "Refund from Online Shopping"),
-//     Transaction(
-//       transactionId: "T1005",
-//       date: ("2023-11-10"),
-//       type: "Debit",
-//       amount:  100.00,
-//       description: "Restaurant Meal"),
-//     ];
-//      return tempList;
-     
-
-
+  
