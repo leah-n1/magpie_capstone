@@ -17,7 +17,7 @@ Future <EWallet?> getEwalletData() async {
   EWallet? eWallet;
   try {
     var response = await http.get(url);
-    print('Response ${response.body}');
+    // print('Response ${response.body}');
 
   if (response.statusCode == 200) {
 

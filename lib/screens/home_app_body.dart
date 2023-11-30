@@ -155,8 +155,28 @@ class _BABodyWidgetState extends State<BABodyWidget> {
                              child: Container(
                              height: 120,
                              width:30,
-                             color: const Color.fromARGB(255, 227, 180, 180),
+                             color: const Color.fromARGB(255,255,255,255),
                              margin: const EdgeInsets.fromLTRB(0,16,14,16),
+                             child: Column(
+                              children: [
+                                Container(
+                                  height:60,
+                                  width:48,
+                                  margin: const EdgeInsets.fromLTRB(0,0,40,0),
+                                  padding: const  EdgeInsets.fromLTRB(0,0,0,15),
+                                  color: const Color.fromARGB(255,255,255,255),
+                                  child: Image.asset('assets/images/mdi_remove_red_eye.png')
+                                ),
+                                Container(
+                                  height:60,
+                                  width:60,
+                                  margin: const EdgeInsets.fromLTRB(20,0,0,0),
+                                  padding: const  EdgeInsets.fromLTRB(8,30,0,0),
+                                  color: const Color.fromARGB(255,255,255,255),
+                                  child:Image.asset('assets/images/Group 57.png'),
+                                ),  
+                              ],
+                             ),
                              ),
                            ),
                          ],
@@ -268,11 +288,7 @@ class _BABodyWidgetState extends State<BABodyWidget> {
                               ],
                             )
                            ),
-                           
-                           
-                           
-                           
-                           ],
+                        ],
                       )
                      ),
                    const SizedBox(height:16),
