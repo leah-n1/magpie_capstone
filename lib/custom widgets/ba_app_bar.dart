@@ -34,7 +34,7 @@ class _BAAppBarState extends State<BAAppBar> {
         children: [
           widget.leadingWidget ?? Container(),
           widget.titleWidget ?? Container(),
-         
+          const BASpacer(),
           widget.trailingWidget ?? Container(),
         ],
       ),

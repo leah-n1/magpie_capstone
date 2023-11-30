@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter_capstone/screens/home_screen.dart';
-import 'custom widgets/ba_safe_space.dart';
+
 
 
 void main() {

@@ -1,27 +1,51 @@
 import 'package:flutter/widgets.dart';
 
-class BATabBAr extends StatefulWidget {
-  final Size screenSize;
-  final Color backgroundcolor;
-  final Widget? content;
-  final Widget? display;
+import 'ba_spacer.dart';
 
-  const BATabBAr(
-    {super.key,
-    required this.screenSize, 
-    required this.backgroundcolor,
-    this.content,
-    this.display,
-    });
+
+class BATabBar extends StatefulWidget {
+  final Size screenSize;
+  final Color backgroundColor;
+  final Widget? leadingWidget;
+  final Widget? secondWidget;
+  final Widget? thirdWidget;
+  final Widget? fourthWidget;
+  final Widget? endwidget;
+
+  const BATabBar({
+    super.key,
+    required this.screenSize,
+    this.backgroundColor = const Color.fromARGB(255, 243, 243, 243),
+    this.leadingWidget,
+    this.secondWidget,
+    this.thirdWidget,
+    this.fourthWidget,
+    this.endwidget,
+  });
 
   @override
-  State<BATabBAr> createState() => _BATabBArState();
-}class _BATabBArState extends State<BATabBAr> {
+  State<BATabBar> createState() => _BATabBarState();
+}
 
+class _BATabBarState extends State<BATabBar> {
+  @override
   Widget build(BuildContext context) {
+    var size = widget.screenSize;
     return Container(
-      height: widget.screenSize.height * 0.10,
-      color: widget.backgroundcolor,
+      height: size.height * 0.10,
+      width: 400,
+      color: widget.backgroundColor,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          widget.leadingWidget ?? Container(),
+          widget.secondWidget ?? Container(),
+          widget.thirdWidget ?? Container(),
+          widget.fourthWidget ?? Container(),
+          widget.endwidget ?? Container(),
+        ],
+      ),
     );
   }
 }

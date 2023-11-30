@@ -57,7 +57,7 @@ class _BABodyWidgetState extends State<BABodyWidget> {
             Container(
               clipBehavior: Clip.none,
               color: const Color.fromRGBO(228,229,236,1),
-              padding: const EdgeInsets.fromLTRB(18,16,18,0),
+              padding: const EdgeInsets.fromLTRB(18,4,18,32),
               child: Column(
                mainAxisAlignment: MainAxisAlignment.center,
                  children: [
