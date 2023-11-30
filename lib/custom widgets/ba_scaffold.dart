@@ -46,7 +46,8 @@ class _BAScaffoldState extends State<BAScaffold> {
                         width: screenSize.width,
                       ),
                     )
-                  : Positioned(
+                  : 
+                  Positioned(
                       top: (screenSize.height * 0.10),
                       bottom: widget.bottomTabBar == null
                           ? 0.0
@@ -66,7 +67,8 @@ class _BAScaffoldState extends State<BAScaffold> {
                         width: screenSize.width,
                       ),
                     )
-                  : Positioned(
+                  : 
+                  Positioned(
                       top: 0,
                       left: 0,
                       right: 0,
@@ -79,7 +81,8 @@ class _BAScaffoldState extends State<BAScaffold> {
                     ),
               widget.bottomTabBar == null
                   ? Container()
-                  : Positioned(
+                  :
+                   Positioned(
                       bottom: 0,
                       left: 0,
                       right: 0,

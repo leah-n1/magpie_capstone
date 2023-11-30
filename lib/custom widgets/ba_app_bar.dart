@@ -27,16 +27,14 @@ class _BAAppBarState extends State<BAAppBar> {
   Widget build(BuildContext context) {
     var size = widget.screenSize;
     return Container(
-      height: size.height * 0.10,
-      width: 400,
       color: widget.backgroundColor,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           widget.leadingWidget ?? Container(),
           widget.titleWidget ?? Container(),
-          const BASpacer(),
+         
           widget.trailingWidget ?? Container(),
         ],
       ),

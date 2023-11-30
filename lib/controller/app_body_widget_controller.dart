@@ -7,6 +7,9 @@ import '../models/transaction_model.dart';
 
 class AppBodyController {
  List<Transaction> listTransaction = [];
+ dynamic walletBalance= '--,--';
+ dynamic walletNumber= 0;
+ dynamic walletName='';
 
 Future <EWallet?> getEwalletData() async {
   var url = Uri.parse(
@@ -14,7 +17,7 @@ Future <EWallet?> getEwalletData() async {
   EWallet? eWallet;
   try {
     var response = await http.get(url);
-    print('RESSSP ${response.body}');
+    print('Response ${response.body}');
 
   if (response.statusCode == 200) {
 

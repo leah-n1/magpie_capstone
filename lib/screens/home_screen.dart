@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_capstone/custom%20widgets/ba_app_bar.dart';
+import 'package:flutter_capstone/custom%20widgets/ba_safe_space.dart';
 import 'package:flutter_capstone/custom%20widgets/ba_scaffold.dart';
 import 'package:flutter_capstone/custom%20widgets/ba_tab_bar.dart';
 import 'package:flutter_capstone/screens/home_app_body.dart';
-import 'package:flutter_capstone/utilities/app_body..dart';
 
-// import '../custom_widgets/ba.safe_space.dart';
-import '../utilities/ba.safe_space.dart';
+
+
 
 
 class HomeScreen extends StatefulWidget {
@@ -24,7 +24,6 @@ class _HomeScreenState extends State<HomeScreen> {
       color: const Color.fromARGB(255,255,255,255),
       child: Align(
         alignment: Alignment.topLeft,
-       
         child: BASafeSpace(
           child: BAScaffold(
             appBar: BAAppBar(
@@ -32,9 +31,9 @@ class _HomeScreenState extends State<HomeScreen> {
               backgroundColor:  const Color(0xFFFDFEFF),
               leadingWidget: 
                     Container(
-                      color: const Color.fromARGB(255, 190, 62, 62),
                       height: 100,
                       width:  100,
+                      child: Image.asset('assets/images/Menu.png'),
                     ),
               titleWidget: const Center(
                 child: Text('Fitaka',style:TextStyle(
@@ -44,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       )),
                     ),
               trailingWidget: Container(
+                      margin: const EdgeInsets.fromLTRB(0,0,8,0),
                       height: 40,
                       width:  40,
                       decoration:BoxDecoration(
@@ -57,19 +57,46 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       ),
                     ),
-                body: MPBodyWidget(
-                // screenSize: screenSize,
-                ),
+                body: BABodyWidget(screenSize: screenSize),
+                
+        
                 bottomTabBar: BATabBAr(
-                screenSize: screenSize,
-                ),
-              
-             
-              
-            ),
-          ),
-        ),
-    );
-    
-  }
-}
+                screenSize: screenSize, 
+                backgroundcolor: const Color(0xFFFDFEFF),
+                content: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      color: Color.fromARGB(255, 85, 142, 199),
+                      height: 64,
+                      width: 64,
+                      child:Image.asset('assets/images/wallet.png'),
+                  ),
+                  Container(
+                      color: const Color(0xFFFDFEFF),
+                      height: 64,
+                      width: 64,
+                      child:Image.asset('assets/images/world.png'),
+                  ),
+                   Container(
+                      color: const Color(0xFFFDFEFF),
+                      height: 64,
+                      width: 64,
+                    
+                  ),
+                   Container(
+                      color: const Color(0xFFFDFEFF),
+                      height: 64,
+                      width: 64,
+                      child:Image.asset('assets/images/barchart.png'),
+                  ),
+                   Container(
+                      color: const Color(0xFFFDFEFF),
+                      height: 64,
+                      width: 64,
+                      child:Image.asset('images/mdi_favorite_border.png'),
+                  ),
+                  ],
+          ))))));
+  }}
