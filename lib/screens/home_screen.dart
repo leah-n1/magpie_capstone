@@ -33,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       height: 100,
                       width:  100,
+                      margin: const EdgeInsets.fromLTRB(0,0,60,0),
                         child: Image.asset('assets/images/Menu.png'),
                     ),
               titleWidget: const Center(
@@ -51,8 +52,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       border: Border.all(color: const Color.fromRGBO(220,101,101,1),
                       width: 2,),
                       image: const DecorationImage( 
-                        fit: BoxFit.cover,
-                        image: NetworkImage('https://source.unsplash.com/random?sig=1'),
+                        fit: BoxFit.contain,
+                        image: AssetImage('assets/images/flash.png'),
                       ),),
                     ),),
             body: BABodyWidget(screenSize: screenSize),
