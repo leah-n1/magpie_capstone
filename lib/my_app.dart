@@ -11,17 +11,7 @@ class MyApp extends StatelessWidget {
       color: const Color.fromARGB(255, 255, 255, 255),
       builder: (context, child) {
         return Navigator(
-          // onGenerateInitialRoutes: (navigator, initialRoute) {
-          //   print("${navigator} , ${initialRoute}");
-          //   return [
-          //     PageRouteBuilder(
-          //       settings: const RouteSettings(name: '/'),
-          //       pageBuilder: (context, animation1, animation2) {
-          //         return const HomeScreen();
-          //       },
-          //     ),
-          //   ];
-          // },
+       
           onGenerateRoute: (routeSetting) {
             print(routeSetting);
             return PageRouteBuilder(
@@ -33,6 +23,7 @@ class MyApp extends StatelessWidget {
           },
         );
       },
+     
     );
   }
 }

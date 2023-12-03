@@ -43,13 +43,12 @@ class _BAScaffoldState extends State<BAScaffold> {
                       left: 0,
                       right: 0,
                       child: Container(
-                        color: const Color.fromARGB(255,255,255,255),
+                        color: const Color.fromARGB(255, 217, 217, 217),
                         height: screenSize.height * 0.8,
                         width: screenSize.width,
                       ),
                     )
-                  : 
-                  Positioned(
+                  : Positioned(
                       top: (screenSize.height * 0.10),
                       bottom: widget.bottomTabBar == null
                           ? 0.0
@@ -63,7 +62,6 @@ class _BAScaffoldState extends State<BAScaffold> {
                       top: 0,
                       left: 0,
                       right: 0,
-                      bottom: screenSize.height * .90,
                       child: Container(
                         color: const Color.fromARGB(255,255,255,255),
                         height: screenSize.height * 0.10,
@@ -75,14 +73,12 @@ class _BAScaffoldState extends State<BAScaffold> {
                       top: 0,
                       left: 0,
                       right: 0,
-                      child: SafeArea(
-                        child: Container(
-                          clipBehavior: Clip.none,
-                          color: const Color.fromARGB(255,255,255,255),
-                          height: screenSize.height * 0.10,
-                          width: screenSize.width,
-                          child: widget.appBar ?? Container(),
-                        ),
+                      child: Container(
+                        clipBehavior: Clip.none,
+                        color: const Color.fromARGB(255,255,255,255),
+                        height: screenSize.height * 0.10,
+                        width: screenSize.width,
+                        child: widget.appBar ?? Container(),
                       ),
                     ),
               widget.bottomTabBar == null

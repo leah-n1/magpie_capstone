@@ -21,6 +21,7 @@ Transaction({
     String? date,
     String? type,
     double? amount,
+
   }) {
     return Transaction(
       transactionId: transactionId ?? this.transactionId,
@@ -36,6 +37,7 @@ Transaction({
       'date': date,
       'type': type,
       'amount': amount,
+      'description': description,
     };
   }
 
@@ -44,7 +46,8 @@ Transaction({
       transactionId: map['transactionId'] as String,
       date: map['date'] as String,
       type: map['type'] as String,
-      amount: map['amount'] as double, description: '',
+      amount: map['amount'] as double,
+      description: map['description'] as String,
     );
   }
 }

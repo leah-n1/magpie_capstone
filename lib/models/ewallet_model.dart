@@ -4,7 +4,7 @@ import 'transaction_model.dart';
 
 class EWallet {
   final String accountNumber;
-  final num balance;
+  final double balance;
   final String accountName;
   List<Transaction> transactionHistory;
   
@@ -28,7 +28,7 @@ EWallet({
   factory EWallet.fromMap(Map<String, dynamic> map) {
     return EWallet(
       accountNumber: map['accountNumber'] as String,
-      balance: map['balance'] as num,
+      balance: map['balance'] as double,
       accountName: map['accountName'] as String,
       transactionHistory: List<Transaction>.from((map['transactionHistory'] as List<dynamic>).map<Transaction>((x) => Transaction.fromMap(x as Map<String,dynamic>),),),
     );

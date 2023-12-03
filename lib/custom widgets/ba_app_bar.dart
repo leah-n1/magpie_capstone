@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:get/utils.dart';
 import 'ba_spacer.dart';
 
 
@@ -25,16 +26,21 @@ class BAAppBar extends StatefulWidget {
 class _BAAppBarState extends State<BAAppBar> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          widget.leadingWidget ?? Container(),
-          widget.titleWidget ?? Container(),
-          const BASpacer(),
-          widget.trailingWidget ?? Container(),
-        ],
-      
+       var size = widget.screenSize;
+    return Container(
+      height: size.height *10,
+      width: 400,
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            widget.leadingWidget ?? Container(),
+            widget.titleWidget ?? Container(),
+            const BASpacer(),
+            widget.trailingWidget ?? Container(),
+          ],
+        
+      ),
     );
   }
 }
