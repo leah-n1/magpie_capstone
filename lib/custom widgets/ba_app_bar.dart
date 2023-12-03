@@ -25,10 +25,7 @@ class BAAppBar extends StatefulWidget {
 class _BAAppBarState extends State<BAAppBar> {
   @override
   Widget build(BuildContext context) {
-    var size = widget.screenSize;
-    return Container(
-      color: widget.backgroundColor,
-      child: Row(
+    return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -37,7 +34,7 @@ class _BAAppBarState extends State<BAAppBar> {
           const BASpacer(),
           widget.trailingWidget ?? Container(),
         ],
-      ),
+      
     );
   }
 }

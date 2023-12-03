@@ -1,15 +1,17 @@
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_capstone/custom%20widgets/ba_safe_space.dart';
 
 
 class BAScaffold extends StatefulWidget {
+
   final Widget? appBar;
   final Widget? body;
   final Widget? bottomTabBar;
 
   const BAScaffold({
     Key? key,
-    this.appBar,
+   this.appBar,
     this.body,
     this.bottomTabBar,
   }) : super(key: key);
@@ -61,6 +63,7 @@ class _BAScaffoldState extends State<BAScaffold> {
                       top: 0,
                       left: 0,
                       right: 0,
+                      bottom: screenSize.height * .90,
                       child: Container(
                         color: const Color.fromARGB(255,255,255,255),
                         height: screenSize.height * 0.10,
@@ -72,11 +75,14 @@ class _BAScaffoldState extends State<BAScaffold> {
                       top: 0,
                       left: 0,
                       right: 0,
-                      child: Container(
-                        color: const Color.fromARGB(255,255,255,255),
-                        height: screenSize.height * 0.10,
-                        width: screenSize.width,
-                        child: widget.appBar ?? Container(),
+                      child: SafeArea(
+                        child: Container(
+                          clipBehavior: Clip.none,
+                          color: const Color.fromARGB(255,255,255,255),
+                          height: screenSize.height * 0.10,
+                          width: screenSize.width,
+                          child: widget.appBar ?? Container(),
+                        ),
                       ),
                     ),
               widget.bottomTabBar == null

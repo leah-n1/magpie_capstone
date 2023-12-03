@@ -7,7 +7,7 @@ class Transaction {
   String type;
   double amount;
   String description;
-  Transaction({
+Transaction({
     required this.transactionId,
     required this.date,
     required this.type,

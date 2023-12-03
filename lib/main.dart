@@ -14,10 +14,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // return Navigator(
+    //   onGenerateRoute: (routeSettings) {
+    //     return PageRouteBuilder(
+    //           settings: routeSettings,
+    //           pageBuilder: (context, animation1, animation2) {
+    //             return const HomeScreen();
+    //           });
+
+    //   }
+    //   ,
+    // );
   
-    return const Directionality(textDirection: TextDirection.ltr,
-      child: HomeScreen(),
-    );
+    return const MyApp();
   }
 }
 

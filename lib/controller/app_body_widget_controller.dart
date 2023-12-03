@@ -11,6 +11,8 @@ class AppBodyController {
  dynamic walletNumber= 0;
  dynamic walletName='';
 
+
+
 Future <EWallet?> getEwalletData() async {
   var url = Uri.parse(
     "https://demo9021501.mockable.io/account_details");

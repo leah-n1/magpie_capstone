@@ -46,7 +46,7 @@ class _MPPullDownRefreshState extends State<MPPullDownRefresh> {
               width: 150,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(75),
-                color: Color.fromARGB(195, 228, 228, 228),
+                color: const Color.fromARGB(195, 228, 228, 228),
               ),
               child: const Center(
                 child: Text("Pull to Refresh"),

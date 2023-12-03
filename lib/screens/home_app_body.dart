@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_capstone/custom%20widgets/ba_pulldown_refresh.dart';
-
 import '../controller/app_body_widget_controller.dart';
-// import 'transaction_details.dart';
+import 'transaction_details.dart';
+
 
 class BABodyWidget extends StatefulWidget {
  final Size screenSize;
@@ -20,20 +20,7 @@ class BABodyWidget extends StatefulWidget {
 
 class _BABodyWidgetState extends State<BABodyWidget> {
   AppBodyController controller = AppBodyController();
-  didTap(int index) async {
-    print(index);
-    // Navigator.push(
-    //   context,
-    //   PageRouteBuilder(
-    //     pageBuilder: (context, animation1, animation2) {
-    //       return TransactionDetailScreen(
-    //         name: controller.listTransaction[index].type,
-    //       );
-    //     },
-    //   ),
-    // );
-  }
-
+  
   Future<void> pullDownRefresh() async {
     var eWallet = await controller.getEwalletData();
     setState(() {
@@ -43,11 +30,30 @@ class _BABodyWidgetState extends State<BABodyWidget> {
       controller.walletNumber= eWallet?.accountNumber ?? [];
     });
   }
+  
 
 @override void initState(){
   super.initState();
   pullDownRefresh();
 }
+
+  didTap(int index) async {
+    // print("context $context");
+   
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        // settings: RouteSettings(
+        //   arguments: controller.listTransaction[index]
+        // ),
+        pageBuilder: (context, animation1, animation2) {
+        return TransactionDetailScreen(type:  controller.listTransaction[index].type);}
+         ));
+        }
+          
+    
+   
+
   
 @override
   Widget build(BuildContext context) {
@@ -61,129 +67,125 @@ class _BABodyWidgetState extends State<BABodyWidget> {
               child: Column(
                mainAxisAlignment: MainAxisAlignment.center,
                  children: [
-                   GestureDetector(
-                    onTap: () async {
-                     await pullDownRefresh();
-                    },
-                     child: Container(
-                       height:159,
-                       width: 336,
-                       decoration: BoxDecoration(
-                            color: const Color.fromRGBO(254, 254, 254,1),
-                            borderRadius: BorderRadius.circular(25),
-                            boxShadow:const [BoxShadow(
-                             color:Color.fromARGB(26,0,0,0),
-                             offset: Offset(0, 4),
-                             blurRadius: 15,
-                             spreadRadius: 0,
-                          )] ,
-                         ),
-                        child: Row(
-                         mainAxisAlignment: MainAxisAlignment.start,
-                         mainAxisSize: MainAxisSize.max,
-                         crossAxisAlignment: CrossAxisAlignment.center,
-                         children: [
-                           Expanded(
-                             flex: 3,
-                             child: Container(
-                             height: 120,
-                             width:50,
-                             color: const Color.fromARGB(255,255,255,255),
-                             margin: const EdgeInsets.fromLTRB(14,4,8,4),
-                             child: Column(
-                               mainAxisAlignment: MainAxisAlignment.start,
-                               mainAxisSize: MainAxisSize.max,
-                               children: [
-                                 Container(
-                                   height: 50,
-                                   width: 250, 
-                                   color: const Color.fromARGB(255,255,255,255),
-                                   margin: const EdgeInsets.fromLTRB(1,1,1,0),
-                                   padding: const EdgeInsets.fromLTRB(0,2,0,2),
-                                   child: Text(
-                                     'PHP ${controller.walletBalance}',
-                                     style: const TextStyle(
-                                       fontSize:36,
-                                       fontWeight: FontWeight.w600,
-                                       color: Color.fromARGB(255, 10, 10, 10)),),
-                                 ),
-                                 Container(
-                                  height: 25,
-                                  width:250,
-                                   color: const Color.fromARGB(255,255,255,255),
-                                   margin: const EdgeInsets.fromLTRB(1,1,1,0),
-                                   padding: const EdgeInsets.fromLTRB(0,4,0,4),
-                                   child: const Text('Available Balance:',
-                                   style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color.fromARGB(255,10,10,10)
-                                   ),)
-                                 ),
-                                 Container( 
-                                  height: 14,
-                                  width: 250,
-                                   color: const Color.fromARGB(255,255,255,255),
-                                   margin: const EdgeInsets.fromLTRB(1,1,1,0),
-                                   padding: const EdgeInsets.fromLTRB(0,2,0,2),
-                                   child:  Text('Account Name:${controller.walletName}',
-                                   style: const TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromARGB(255,10,10,10)
-                                   ),)
-                                 ),
-                                 Container( 
-                                  height: 14,
-                                  width:250,
-                                   color: const Color.fromARGB(255,255,255,255),
-                                   margin: const EdgeInsets.fromLTRB(1,12,1,0),
-                                   padding: const EdgeInsets.fromLTRB(0,2,0,2),
-                                   child: Text('Account Number: ${controller.walletNumber}',
-                                   style: const TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromARGB(255,10,10,10)
-                                   ),)
-                                 ),
-                                 ],
-                               ),
-                             ),
-                           ),
-                           Expanded(
-                             flex:1,
-                             child: Container(
-                             height: 120,
-                             width:30,
-                             color: const Color.fromARGB(255,255,255,255),
-                             margin: const EdgeInsets.fromLTRB(0,16,14,16),
-                             child: Column(
-                              children: [
-                                Container(
-                                  height:60,
-                                  width:48,
-                                  margin: const EdgeInsets.fromLTRB(0,0,40,0),
-                                  padding: const  EdgeInsets.fromLTRB(0,0,0,15),
-                                  color: const Color.fromARGB(255,255,255,255),
-                                  child: Image.asset('assets/images/mdi_remove_red_eye.png')
-                                ),
-                                Container(
-                                  height:60,
-                                  width:60,
-                                  margin: const EdgeInsets.fromLTRB(20,0,0,0),
-                                  padding: const  EdgeInsets.fromLTRB(8,30,0,0),
-                                  color: const Color.fromARGB(255,255,255,255),
-                                  child:Image.asset('assets/images/Group 57.png'),
-                                ),  
-                              ],
-                             ),
-                             ),
-                           ),
-                         ],
-                        ),
-                     
+                   Container(
+                     height:159,
+                     width: 336,
+                     margin: const EdgeInsets.fromLTRB(0,32,0,8),
+                     decoration: BoxDecoration(
+                          color: const Color.fromRGBO(254, 254, 254,1),
+                          borderRadius: BorderRadius.circular(25),
+                          boxShadow:const [BoxShadow(
+                           color:Color.fromARGB(26,0,0,0),
+                           offset: Offset(0, 4),
+                           blurRadius: 15,
+                           spreadRadius: 0,
+                        )] ,
                        ),
-                   ),
+                      child: Row(
+                       mainAxisAlignment: MainAxisAlignment.start,
+                       mainAxisSize: MainAxisSize.max,
+                       crossAxisAlignment: CrossAxisAlignment.center,
+                       children: [
+                         Expanded(
+                           flex: 3,
+                           child: Container(
+                           height: 120,
+                           width:50,
+                           color: const Color.fromARGB(255,255,255,255),
+                           margin: const EdgeInsets.fromLTRB(14,8,8,4),
+                           child: Column(
+                             mainAxisAlignment: MainAxisAlignment.start,
+                             mainAxisSize: MainAxisSize.max,
+                             children: [
+                               Container(
+                                 height: 50,
+                                 width: 250, 
+                                 color: const Color.fromARGB(255,255,255,255),
+                                 margin: const EdgeInsets.fromLTRB(1,1,1,0),
+                                 padding: const EdgeInsets.fromLTRB(0,2,0,2),
+                                 child: Text(
+                                   'PHP ${controller.walletBalance}',
+                                   style: const TextStyle(
+                                     fontSize:36,
+                                     fontWeight: FontWeight.w600,
+                                     color: Color.fromARGB(255, 10, 10, 10)),),
+                               ),
+                               Container(
+                                height: 25,
+                                width:250,
+                                 color: const Color.fromARGB(255,255,255,255),
+                                 margin: const EdgeInsets.fromLTRB(1,1,1,0),
+                                 padding: const EdgeInsets.fromLTRB(0,4,0,4),
+                                 child: const Text('Available Balance:',
+                                 style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromARGB(255,10,10,10)
+                                 ),)
+                               ),
+                               Container( 
+                                height: 14,
+                                width: 250,
+                                 color: const Color.fromARGB(255,255,255,255),
+                                 margin: const EdgeInsets.fromLTRB(1,1,1,0),
+                                 padding: const EdgeInsets.fromLTRB(0,2,0,2),
+                                 child:  Text('Account Name:${controller.walletName}',
+                                 style: const TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color.fromARGB(255,10,10,10)
+                                 ),)
+                               ),
+                               Container( 
+                                height: 14,
+                                width:250,
+                                 color: const Color.fromARGB(255,255,255,255),
+                                 margin: const EdgeInsets.fromLTRB(1,12,1,0),
+                                 padding: const EdgeInsets.fromLTRB(0,2,0,2),
+                                 child: Text('Account Number: ${controller.walletNumber}',
+                                 style: const TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color.fromARGB(255,10,10,10)
+                                 ),)
+                               ),
+                               ],
+                             ),
+                           ),
+                         ),
+                         Expanded(
+                           flex:1,
+                           child: Container(
+                           height: 120,
+                           width:30,
+                           color: const Color.fromARGB(255,255,255,255),
+                           margin: const EdgeInsets.fromLTRB(0,16,14,16),
+                           child: Column(
+                            children: [
+                              Container(
+                                height:60,
+                                width:48,
+                                margin: const EdgeInsets.fromLTRB(0,0,40,0),
+                                padding: const  EdgeInsets.fromLTRB(0,0,0,15),
+                                color: const Color.fromARGB(255,255,255,255),
+                                child: Image.asset('assets/images/mdi_remove_red_eye.png')
+                              ),
+                              Container(
+                                height:60,
+                                width:60,
+                                margin: const EdgeInsets.fromLTRB(20,0,0,0),
+                                padding: const  EdgeInsets.fromLTRB(8,30,0,0),
+                                color: const Color.fromARGB(255,255,255,255),
+                                child:Image.asset('assets/images/Group 57.png'),
+                              ),  
+                            ],
+                           ),
+                           ),
+                         ),
+                       ],
+                      ),
+                   
+                     ),
                    const SizedBox(height:16),
                    Container(
                     clipBehavior: Clip.none,
@@ -328,10 +330,10 @@ class _BABodyWidgetState extends State<BABodyWidget> {
                          itemCount: controller.listTransaction.length,
                          shrinkWrap: true,
                          scrollDirection: Axis.vertical,
-                         itemBuilder: (context,index){
+                         itemBuilder: (context,index) {
                           
                            return GestureDetector(
-                            onTap: ()=>didTap(index),
+                            onTap: () => didTap(index),
                             child: Container(
                                width: 336,
                                height: 95,
@@ -423,7 +425,7 @@ class _BABodyWidgetState extends State<BABodyWidget> {
                                      ),
                                    ),]
                                  ),),
-                           );}
+                                );}
                              ), 
                           onRefresh: () async {
                             await pullDownRefresh();
